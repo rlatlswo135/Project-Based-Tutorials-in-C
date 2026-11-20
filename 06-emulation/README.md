@@ -6,6 +6,8 @@
 
 표의 순서대로 진행한다. 폴더는 첫 작업 때 만들고, 원문 실습이 더 있으면 해당 항목 끝에 회차를 추가한다.
 
+회차는 2026-11-20에 원문 목차와 재생 시간을 대조해 나눴다. 항목마다 `원문 메모`에 근거와 확인하지 못한 부분을 적었다. 영상 항목은 제목과 길이만 보고 나눈 것이라, 실제 내용과 다르면 그날 줄을 고친다.
+
 | 원본 번호 | 순서 · 작업 폴더 |
 |---|---|
 | 03 | [`simple-vm/`](#03-simple-vm) |
@@ -18,11 +20,22 @@
 | 26 | [`gameboy-game/`](#26-gameboy-game) |
 | 35 | [`gba-game/`](#35-gba-game) |
 
+## 환경
+
+현재 Mac(Apple Silicon)에서 2026-11-20에 확인한 상태다.
+
+- 03·06·04·02·05는 macOS에서 할 수 있다(화면 출력에는 SDL2가 필요하다).
+- 23은 cc65, 26은 GBDK, 35는 GBA 툴체인과 각 콘솔의 에뮬레이터가 필요하다. 모두 지금 설치돼 있지 않다.
+
 ## 03 simple-vm
 
 원본: [README → Computer Architecture](../README.md#computer-architecture)
 
 * [Implementing a Virtual Machine in C](https://felixangell.com/blog/virtual-machine-in-c)
+
+> **원문 메모**
+>
+> 원문 주소는 404다. 보존본: [2018-06](http://web.archive.org/web/20180620201942/https://felixangell.com/blog/virtual-machine-in-c/). 본문 내용은 대조하지 못했다. 원문에 조건 분기가 없으면 `03.03`은 직접 추가하는 실험으로 적는다.
 
 ### Daily TODO
 
@@ -38,15 +51,16 @@
 
 * [Write your Own Virtual Machine](https://justinmeiners.github.io/lc3-vm/)
 
+> **원문 메모**
+>
+> 원문 구성: LC-3 architecture(Memory · Registers · Instruction set · Condition flags) · Assembly examples · Executing programs · Implementing instructions(ADD, LDI와 나머지 명령) · Trap routines · Loading programs · Memory mapped registers · Platform specifics. 원문 순서에 맞게 회차 순서를 바꿨다.
+
 ### Daily TODO
 
-- [ ] `06.01` 16비트 워드 로더를 구현한다. 엔디언이 다른 이미지의 시작 주소를 확인한다.
-- [ ] `06.02` ADD·AND·NOT, 부호 확장, 조건 플래그를 작은 명령어 벡터로 검증한다.
-- [ ] `06.03` LD·ST와 BR을 연결한다. 루프가 예상 횟수에 종료되는지 확인한다.
-- [ ] `06.04` TRAP 입출력을 연결하고 원문 샘플 프로그램 하나를 끝까지 실행한다.
-
-**항목 종료 조건:** 원문에서 정한 범위와 회차를 대조하고, 남은 실습이 있으면 아래에 다음 번호로 먼저 추가한다. 마지막 회차에 실행법과 원문 대비 결과를 작업 폴더에 남긴다.
-
+- [ ] `06.01` 메모리·레지스터·조건 플래그와 실행 루프를 만들고 ADD·AND·NOT을 구현한다. 부호 확장과 플래그 갱신을 작은 명령어 벡터로 확인한다.
+- [ ] `06.02` 적재·저장 계열(LD·LDI·LDR·LEA·ST·STI·STR)과 분기·점프(BR·JMP·JSR)를 구현한다. 루프가 예상 횟수에 끝나는지 확인한다.
+- [ ] `06.03` TRAP 루틴과 이미지 로더를 만든다. 빅 엔디언 이미지의 시작 주소와 첫 워드가 맞게 읽히는지 확인한다.
+- [ ] `06.04` 메모리 맵 레지스터(키보드 상태·데이터)와 터미널 입력 설정을 붙인다. 원문이 제공하는 샘플 프로그램 하나를 끝까지 실행한다.
 ## 04 chip8
 
 원본: [README → Computer Architecture](../README.md#computer-architecture)
@@ -57,6 +71,10 @@
   * [Part 3](http://craigthomas.ca/blog/2015/02/19/writing-a-chip-8-emulator-draw-command-part-3/)
   * [Part 4](http://craigthomas.ca/blog/2017/10/15/writing-a-chip-8-emulator-built-in-font-set-part-4/)
   * [Part 5](http://craigthomas.ca/blog/2018/09/07/writing-a-chip-8-emulator-instruction-set-part-5/)
+
+> **원문 메모**
+>
+> 원문 주소 5편이 모두 404다. 보존본: [1편](http://web.archive.org/web/20250427051212/http://craigthomas.ca/blog/2014/06/21/writing-a-chip-8-emulator-part-1/) · [2편](http://web.archive.org/web/20260111044638/http://craigthomas.ca/blog/2014/07/17/writing-a-chip-8-emulator-part-2/) · [3편](http://web.archive.org/web/20260530005204/https://craigthomas.ca/blog/2015/02/19/writing-a-chip-8-emulator-draw-command-part-3/) · [4편](http://web.archive.org/web/20260530005151/https://craigthomas.ca/blog/2017/10/15/writing-a-chip-8-emulator-built-in-font-set-part-4/) · [5편](http://web.archive.org/web/20260101061125/https://craigthomas.ca/blog/2018/09/07/writing-a-chip-8-emulator-instruction-set-part-5/). 본문 내용은 대조하지 못했다.
 
 ### Daily TODO
 
@@ -75,6 +93,12 @@
 
 * [Emulator 101](http://emulator101.com/)
 
+> **원문 메모**
+>
+> 자동 요청에는 403으로 응답한다. 보존본: [2024-12](http://web.archive.org/web/20241202111422/https://emulator101.com/). 목차를 확인하지 못했다.
+>
+> 기억으로는 8080 디스어셈블러·에뮬레이터, Space Invaders 기계 부분 외에 CHIP-8과 6502 절도 있는 큰 사이트다(미확인). 첫 회차에 목차를 옮겨 적고 회차를 다시 나눈다. 5회차로는 부족할 가능성이 높다.
+
 ### Daily TODO
 
 - [ ] `02.01` 8080 명령어 테이블로 바이트 몇 개를 디스어셈블한다.
@@ -90,6 +114,10 @@
 원본: [README → Computer Architecture](../README.md#computer-architecture)
 
 * [Writing a Game Boy emulator](https://cturt.github.io/cinoop.html)
+
+> **원문 메모**
+>
+> 원문은 구현 회고 글이다(Memory · Registers · Flags · Implementing the CPU · Real time debugging · Tilesets · Maps · Sprites …). 단계별 코드는 저자의 소스를 함께 본다.
 
 ### Daily TODO
 
@@ -107,6 +135,12 @@
 
 * [Bitwise](https://github.com/pervognsen/bitwise) `video` `in-progress`
 
+> **원문 메모**
+>
+> 원문은 평일 매일 진행된 라이브 스트림 연재다(계획상 약 6개월 분량: 언어·컴파일러 → 하드웨어 설계 → OS). 전체 편수를 확인하지 못했다.
+>
+> **정해야 할 것:** Handmade Hero와 같은 종류의 긴 연재다. 첫 회차에 편수를 세고 완료 범위를 정한다. 그 뒤에는 편 제목을 옮겨 1편 1회차로 줄을 추가한다.
+
 ### Daily TODO
 
 - [ ] `01.01` 영상과 소스의 기준 시점을 기록한다. 첫 실습을 빌드하고 입력 하나를 확인한다.
@@ -122,33 +156,65 @@
 
 * [How to Program an NES game in C](https://nesdoug.com/)
 
+> **원문 메모**
+>
+> 원문은 준비 글 3편(Introduction · What you need · How cc65 works)과 강의 01~24, 부록으로 되어 있다. 기존 3회차를 강의 제목 기준으로 다시 나눴다. cc65와 NES 에뮬레이터가 필요하다(cc65는 지금 설치돼 있지 않다).
+
 ### Daily TODO
 
-- [ ] `23.01` cc65 등 원문의 환경에서 최소 ROM을 만들고 에뮬레이터에서 화면을 띄운다.
-- [ ] `23.02` 스프라이트와 컨트롤러 입력을 연결한다. 한 프레임의 이동을 확인한다.
-- [ ] `23.03` 타일 충돌·스크롤·레벨 전환을 한 동작씩 붙이고 정상 ROM을 실행한다.
-
-**항목 종료 조건:** 원문에서 정한 범위와 회차를 대조하고, 남은 실습이 있으면 아래에 다음 번호로 먼저 추가한다. 마지막 회차에 실행법과 원문 대비 결과를 작업 폴더에 남긴다.
-
+- [ ] `23.01` 준비 글 3편과 01 Our first program: cc65를 설치하고 최소 ROM을 만들어 에뮬레이터에서 화면을 띄운다.
+- [ ] `23.02` 02 What's a v-blank? · 03 VRAM buffer: v-blank 동안 화면을 갱신한다. 글자가 깨지지 않고 바뀌는지 확인한다.
+- [ ] `23.03` 04 Full Background · 05 Palettes: 전체 배경과 팔레트를 올린다. 팔레트를 바꿔 색이 달라지는지 확인한다.
+- [ ] `23.04` 06 Sprites: 스프라이트를 표시한다. 여러 개를 띄워 위치를 확인한다.
+- [ ] `23.05` 07 Controllers (and sprite collisions): 컨트롤러로 스프라이트를 움직이고 스프라이트끼리의 충돌을 판정한다.
+- [ ] `23.06` 08 BG collisions: 배경과의 충돌을 만든다. 벽 모서리에서 통과하지 않는지 확인한다.
+- [ ] `23.07` 09 Scrolling · 10 Game loop: 스크롤과 게임 루프를 만든다. 프레임마다 한 번만 갱신되는지 확인한다.
+- [ ] `23.08` 11 Metatiles: 메타타일로 맵을 구성한다. 맵 데이터를 바꿔 화면이 따라 바뀌는지 확인한다.
+- [ ] `23.09` 12 Scrolling right · 13 Scrolling up: 방향별 스크롤을 만든다. 화면 경계에서 타일이 맞게 이어지는지 확인한다.
+- [ ] `23.10` 14 Platformer: 점프와 중력을 넣는다. 발판 위 착지와 낙하를 확인한다.
+- [ ] `23.11` 15 Music · 16 Sound effects · 17 DPCM Sound: 음악과 효과음을 재생한다. 효과음이 음악을 끊지 않는지 듣고 확인한다.
+- [ ] `23.12` 18 Sprite Zero: 스프라이트 0 히트로 화면을 나눈다. 고정 영역과 스크롤 영역이 분리되는지 확인한다.
+- [ ] `23.13` 19 More things, mappers: 매퍼를 사용한다. 빌드한 ROM의 헤더에서 매퍼 번호를 확인한다.
+- [ ] `23.14` 20 Platformer Again · 21 Finished Platformer: 플랫포머를 완성한다. 시작부터 종료까지 한 번 플레이한다.
+- [ ] `23.15` 22 Zapper / Power Pad: 에뮬레이터가 지원하는 범위에서 실행한다. 지원하지 않으면 막힌 이유를 기록하고 체크하지 않는다.
+- [ ] `23.16` 23 Advanced Mapper – MMC1 · 24 Advanced Mapper – MMC3: 뱅크 전환을 사용한다. 다른 뱅크의 코드나 데이터가 불리는지 확인한다.
 ## 26 gameboy-game
 
 원본: [README → Game Development](../README.md#game-development)
 
 * [Learn How To Develop Your Own GameBoy Games](https://www.youtube.com/playlist?list=PLeEj4c2zF7PaFv5MPYhNAkBGrkx4iPGJo) `video` `in-progress`
 
+> **원문 메모**
+>
+> 재생목록은 22편, 총 338분이다. 편 제목: Hello World · Sprites · Joypad · Backgrounds · Heads Up Display · Sound · Noise · Jumping · Meta-Sprites · Sprite Collision Detection · Background Collision Detection · Splashscreens · Fade Effects · Keyboard · Save Games · Color Sprites · Color Backgrounds · composing your music · playing your music · sprite flipping & priority · Parallax Effects · NEW GBDK 2020.
+>
+> 22편이 새 도구(GBDK 2020)로의 전환을 다루므로 첫 회차에 22편을 먼저 보고 도구를 정한다.
+>
+> 영상 회차의 공통 확인: 그 구간 끝까지의 코드를 빌드·실행하고, 그날 새로 생긴 동작 하나를 다시 재현할 수 있는 입력이나 조작 순서와 함께 작업 폴더에 적는다.
+
 ### Daily TODO
 
-- [ ] `26.01` 원문 도구로 ROM을 만들고 에뮬레이터에서 첫 화면을 확인한다.
-- [ ] `26.02` 타일·스프라이트와 키 입력을 붙여 방향별 이동을 확인한다.
-- [ ] `26.03` VBlank 중 그래픽 갱신을 처리하고 점수·실패 화면을 검증한다.
-
-**항목 종료 조건:** 원문에서 정한 범위와 회차를 대조하고, 남은 실습이 있으면 아래에 다음 번호로 먼저 추가한다. 마지막 회차에 실행법과 원문 대비 결과를 작업 폴더에 남긴다.
-
+- [ ] `26.01` 22편을 먼저 보고 도구를 설치한 뒤 1~2편(Hello World · Sprites, 26분): ROM을 만들어 에뮬레이터에서 스프라이트를 띄운다.
+- [ ] `26.02` 3~4편(Joypad · Backgrounds, 20분): 방향키로 스프라이트를 움직이고 배경을 깐다.
+- [ ] `26.03` 5~7편(Heads Up Display · Sound · Noise, 35분): 윈도 레이어로 HUD를 띄우고 효과음을 낸다.
+- [ ] `26.04` 8편(Jumping, 24분): 점프와 중력을 만든다. 착지 뒤 다시 점프할 수 있는지 확인한다.
+- [ ] `26.05` 9~10편(Meta-Sprites · Sprite Collision Detection, 31분): 여러 타일로 된 캐릭터와 스프라이트 충돌을 만든다.
+- [ ] `26.06` 11편(Background Collision Detection, 33분): 배경 타일과의 충돌을 만든다. 벽을 통과하지 않는지 확인한다.
+- [ ] `26.07` 12~13편(Splashscreens · Fade Effects, 25분): 시작 화면과 페이드를 만든다.
+- [ ] `26.08` 14편(Keyboard, 27분): 화면 키보드로 이름을 입력한다. 최대 길이와 지우기를 확인한다.
+- [ ] `26.09` 15~17편(Save Games · Color Sprites · Color Backgrounds, 37분): 저장과 컬러를 붙인다. 에뮬레이터를 껐다 켠 뒤 저장 값이 남는지 확인한다.
+- [ ] `26.10` 18편(composing your music, 33분): 음악 데이터를 만든다.
+- [ ] `26.11` 19~21편(playing your music · sprite flipping & priority · Parallax Effects, 33분): 음악 재생, 스프라이트 반전, 패럴랙스를 붙인다.
+- [ ] `26.12` 지금까지 만든 요소로 시작 화면부터 종료까지 이어지는 ROM 하나를 만들어 한 번 플레이한다.
 ## 35 gba-game
 
 원본: [README → Game Development](../README.md#game-development)
 
 * [Writing a Game Boy Advance Game](https://www.reinterpretcast.com/writing-a-game-boy-advance-game)
+
+> **원문 메모**
+>
+> 원문은 글 한 편이다(Setting Up A Development Environment · Writing a pong-esque game). GBA 툴체인과 에뮬레이터가 필요하다.
 
 ### Daily TODO
 
