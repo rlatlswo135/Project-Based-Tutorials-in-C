@@ -2,6 +2,8 @@
 
 A list of tutorials that work towards the making of small to large projects in C.
 
+개인 학습 순서와 일일 체크리스트는 [C 프로젝트 학습 로드맵](ROADMAP.md)에서 시작한다.
+
 ## Table of Contents
 
 * [Computer Architecture](#computer-architecture)
