@@ -2,7 +2,7 @@
 
 A list of tutorials that work towards the making of small to large projects in C.
 
-개인 학습 순서와 일일 체크리스트는 [C 프로젝트 학습 로드맵](ROADMAP.md)에서 시작한다.
+개인 학습 순서와 일일 체크리스트: [브라우저용 로드맵](ROADMAP.html) · [Markdown 원본](ROADMAP.md). 내려받은 저장소에서는 `ROADMAP.html`을 더블클릭하면 된다.
 
 ## Table of Contents
 
