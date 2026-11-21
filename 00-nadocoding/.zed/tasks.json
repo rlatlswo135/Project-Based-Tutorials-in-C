@@ -1,0 +1,12 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "Run current C file",
+    "command": "run_dir=$(mktemp -d) || exit 1; trap 'rm -f \"$run_dir/program\"; rmdir \"$run_dir\"' EXIT; cc \"$ZED_FILE\" -o \"$run_dir/program\" && \"$run_dir/program\"",
+    "cwd": "$ZED_DIRNAME",
+    "shell": { "program": "/bin/sh" },
+    "save": "current"
+  }
+]
