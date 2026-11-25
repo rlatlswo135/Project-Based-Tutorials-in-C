@@ -5,6 +5,10 @@ int main(void){
 
     for(int i = 1; i <= count; i++){
         printf("카운트 입니다. %d\n",i);
+        if(count == 3){
+            printf("3이면 멈춥니다.");
+            break;
+        }
     }
 
     int i = 1;
