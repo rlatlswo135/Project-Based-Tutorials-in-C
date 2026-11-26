@@ -19,8 +19,9 @@ int main(void){
     struct Human* p_human = human;
     struct Human new_human = {"new_휴먼2",40,MALE};
 
-    // 구조체 포인터
     *(p_human + 1) = new_human;
+    (p_human + 1)->name = new_human.name; // 구조체 포인터필드 접근할땐 ->
+    // 동일: p_human->age = (*p_human).age
 
     for(int i=0; i<2; i++){
         printf("휴먼 -> %s, %d, %d\n",human[i].name,human[i].age,human[i].gender);
